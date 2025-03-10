@@ -47,7 +47,7 @@ The **Skill Exchange Platform** is an innovative peer-to-peer learning web appli
 - **ZEGOCLOUD API** for real-time video interaction
 
 ### **Database**
-- **PostgreSQL** for secure and efficient data management
+- **MySQL** for secure and efficient data management
 
 ---
 
