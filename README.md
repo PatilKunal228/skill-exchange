@@ -47,7 +47,7 @@ The **Skill Exchange Platform** is an innovative peer-to-peer learning web appli
 - **ZEGOCLOUD API** for real-time video interaction
 
 ### **Database**
-- **PostgreSQL** for secure and efficient data management
+- **MySQL** for secure and efficient data management
 
 ---
 
@@ -60,9 +60,3 @@ This project aligns with **United Nations Sustainable Development Goal 4 (Qualit
 
 ---
 
-## How to Get Started
-
-### **1. Clone the Repository**
-```bash
-git clone https://github.com/your-username/skill-exchange-platform.git
-cd skill-exchange-platform
