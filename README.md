@@ -51,12 +51,5 @@ The **Skill Exchange Platform** is an innovative peer-to-peer learning web appli
 
 ---
 
-## Sustainable Development Alignment
-
-This project aligns with **United Nations Sustainable Development Goal 4 (Quality Education)** by:
-- Eliminating financial barriers to education.
-- Promoting equitable access to learning opportunities.
-- Encouraging professional networking and collaboration.
-
 ---
 
