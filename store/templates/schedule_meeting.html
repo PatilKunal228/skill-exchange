@@ -38,7 +38,7 @@
 </div>
 
 <script>
-    {% comment %} document.getElementById('scheduleButton').addEventListener('click', async () => {
+    document.getElementById('scheduleButton').addEventListener('click', async () => {
         const meetingTitle = document.getElementById('meeting_title').value;
         const meetingDate = document.getElementById('meeting_date').value;
         const meetingTime = document.getElementById('meeting_time').value;
@@ -77,61 +77,8 @@
         }
         document.getElementById('spinner').classList.add("d-none");
         setTimeout(function(){ window.location.reload(); }, 4000);
-    }); {% endcomment %}
-    document.getElementById('scheduleButton').addEventListener('click', async () => {
-        const meetingTitle = document.getElementById('meeting_title').value.trim();
-        const meetingDate = document.getElementById('meeting_date').value;
-        const meetingTime = document.getElementById('meeting_time').value;
-        const customerSelect = document.getElementById('customers');
-        const selectedCustomers = Array.from(customerSelect.selectedOptions).map(opt => opt.value);
-        const messageBox = document.getElementById('message-box');
+    }); 
     
-        // Validation
-        if (!meetingTitle) {
-            messageBox.innerHTML = '<div class="alert alert-danger">Meeting title is required.</div>';
-            return;
-        }
-        if (!meetingDate || !meetingTime) {
-            messageBox.innerHTML = '<div class="alert alert-danger">Please select both a date and time for the meeting.</div>';
-            return;
-        }
-        if (selectedCustomers.length === 0) {
-            messageBox.innerHTML = '<div class="alert alert-danger">Please select at least one connection.</div>';
-            return;
-        }
-    
-        const csrfToken = document.getElementById('csrf_token').value; // Fetch CSRF token
-    
-        document.getElementById('spinner').classList.remove("d-none");
-    
-        try {
-            const response = await fetch("{% url 'schedule_meeting' %}", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRFToken": csrfToken
-                },
-                body: JSON.stringify({
-                    meeting_title: meetingTitle,
-                    meeting_date: meetingDate,
-                    meeting_time: meetingTime,
-                    selected_customers: selectedCustomers
-                })
-            });
-    
-            const result = await response.json();
-            if (response.ok) {
-                messageBox.innerHTML = `<div class="alert alert-success">${result.message}</div>`;
-                setTimeout(() => { window.location.reload(); }, 4000);
-            } else {
-                messageBox.innerHTML = `<div class="alert alert-danger">${result.error}</div>`;
-            }
-        } catch (error) {
-            messageBox.innerHTML = `<div class="alert alert-danger">An error occurred. Please try again later.</div>`;
-        } finally {
-            document.getElementById('spinner').classList.add("d-none");
-        }
-    });
     
 </script>
 

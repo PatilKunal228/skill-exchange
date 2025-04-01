@@ -75,4 +75,5 @@ urlpatterns = [
     # new routes for meeting
     path('meeting/',videocall, name='meeting'),
     path('join/',join_room, name='join_room'),
+    path('schedule_meeting/', schedule_meeting, name='schedule_meeting')
 ]
