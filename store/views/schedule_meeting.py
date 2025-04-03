@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import JsonResponse
 import random
 import time
@@ -12,6 +12,7 @@ from django.core.mail import send_mail
 from django.utils.crypto import get_random_string
 from django.db.models import Q
 from datetime import datetime
+
 
 def schedule_meeting_page(request):
     main_customer_id = request.session.get('customer')
@@ -102,7 +103,7 @@ def schedule_meeting(request):
                     f"Meeting Code: {meeting_code}\n\n"
                     f"Please join the meeting using the link and meeting code provided."
                 ),
-                from_email="devangp539@gmail.com",  # Update with your email
+                from_email="kunalpatil4889@gmail.com",  # Update with your email
                 recipient_list=[customer.email],
             )
         print('after customer mail')  

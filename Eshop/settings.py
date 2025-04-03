@@ -9,6 +9,11 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+import os
+import django.utils.timezone
+
+os.environ['TZ'] = 'Asia/Kolkata'  # Force system timezone
+django.utils.timezone.activate('Asia/Kolkata')  # Activate Django's timezone
 
 from pathlib import Path
 
@@ -85,7 +90,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'kunalpatil4889@gmail.com'  # Replace with your email
-EMAIL_HOST_PASSWORD = 'kunalpatil@228'    # Replace with your email password
+EMAIL_HOST_PASSWORD = 'umyh ilya tbog hgyk'    # Replace with your email password
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER     # Default 'from' address
 
 # Database
@@ -127,7 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
