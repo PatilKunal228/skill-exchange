@@ -107,20 +107,35 @@ class Meeting(models.Model):
 
         return india_datetime
 
+    # def save(self, *args, **kwargs):
+    #     """Ensure the date and time are stored as India timezone."""
+    #     if self.date and self.time:
+    #         # Combine date and time into a naive datetime object
+    #         naive_datetime = timezone.datetime.combine(self.date, self.time)
+
+    #         # Convert to India timezone
+    #         aware_datetime = INDIA_TIMEZONE.localize(naive_datetime)
+
+    #         # Convert to UTC for storage (Django default)
+    #         utc_datetime = aware_datetime.astimezone(pytz.utc)
+
+    #         # Update fields for storage
+    #         self.date = utc_datetime.date()
+    #         self.time = utc_datetime.time()
+
+    #     super().save(*args, **kwargs)
+    
     def save(self, *args, **kwargs):
         """Ensure the date and time are stored as India timezone."""
         if self.date and self.time:
-            # Combine date and time into a naive datetime object
-            naive_datetime = timezone.datetime.combine(self.date, self.time)
+        # Combine date and time into a naive datetime object
+          naive_datetime = timezone.datetime.combine(self.date, self.time)
 
-            # Convert to India timezone
-            aware_datetime = INDIA_TIMEZONE.localize(naive_datetime)
+        # Convert to India timezone and store directly
+          india_datetime = INDIA_TIMEZONE.localize(naive_datetime)
 
-            # Convert to UTC for storage (Django default)
-            utc_datetime = aware_datetime.astimezone(pytz.utc)
-
-            # Update fields for storage
-            self.date = utc_datetime.date()
-            self.time = utc_datetime.time()
+        # Store only IST (without converting to UTC)
+          self.date = india_datetime.date()
+          self.time = india_datetime.time()
 
         super().save(*args, **kwargs)
